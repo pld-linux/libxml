@@ -6,7 +6,7 @@ Summary(ru):	Библиотека XML
 Summary(uk):	Б╕бл╕отека XML
 Name:		libxml
 Version:	1.8.17
-Release:	6
+Release:	7
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -18,7 +18,6 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 This library allows you to manipulate XML files.
