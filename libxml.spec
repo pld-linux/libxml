@@ -2,9 +2,10 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.8.10
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
@@ -24,6 +25,7 @@ Biblioteka libxml umo¿liwia manipulowaie zawarto¶ci± plików XML.
 Summary:	Header files etc to develop libxml applications
 Summary(pl):	Pliki nag³ówkowe i inne do libxml
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -39,6 +41,7 @@ tworzeniu aplikacji opartych o t± bibliotekê.
 Summary:	Static libxml libraries
 Summary(pl):	Biblioteka statyczna libxml
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -53,15 +56,13 @@ Biblioteka statyczna libxml.
 %setup -q
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
