@@ -1,14 +1,14 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.7.4
+Version:	1.8.0
 Release:	1
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
-Source:		ftp://rpmfind.net/pub/veillard/%{name}-%{version}.tar.gz
+Source:		ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
-URL:		http://rufus.w3.org/veillard/XML/messages/
+URL:		http://xmlsoft.org/
 BuildRequires:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
