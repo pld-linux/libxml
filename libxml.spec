@@ -67,7 +67,7 @@ make install prefix=$RPM_BUILD_ROOT/usr/X11R6
 
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO doc/{*.{html,gif},html/*}
+gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
