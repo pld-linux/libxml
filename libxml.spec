@@ -89,17 +89,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-
-%changelog
-* Sat Jul 10 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3.0-1]
-- removed VERSION patch,
-- added DESTDIR patch,
-- added --strip-unneeded on stripping shared libraries,
-- added using %%configure macro,
-- added lib*.la files to devel.
-
-* Tue May 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.0.0-5]
-- based on RH spec,
-- spec rewrited by PLD team.
