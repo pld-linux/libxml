@@ -1,14 +1,14 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.0.0
-Release:	5
+Version:	1.3.0
+Release:	1
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
-Patch1:		libxml-VERSION.patch
+Patch1:		libxml-DESTDIR.patch
 URL:		http://rufus.w3.org/veillard/XML/messages/
 BuildPrereq:	zlib-devel
 Prereq:		/sbin/install-info
@@ -56,18 +56,15 @@ Biblioteka statyczna libxml.
 
 %build
 automake
-libtoolize --force
-aclocal
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix}
+LDFLAGS="-s"; export LDFLAGS
+%configure 
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install prefix=$RPM_BUILD_ROOT%{_prefix}
+make install DESTDIR=$RPM_BUILD_ROOT
 
-strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
@@ -85,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html},html/*}
 %attr(755,root,root) %{_bindir}/xml-config
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 
@@ -93,6 +91,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.a
 
 %changelog
+* Sat Jul 10 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.3.0-1]
+- removed VERSION patch,
+- added DESTDIR patch,
+- added --strip-unneeded on stripping shared libraries,
+- added using %%configure macro,
+- added lib*.la files to devel.
+
 * Tue May 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0.0-5]
 - based on RH spec,
