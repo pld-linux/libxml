@@ -1,14 +1,13 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.3.0
+Version:	1.4.0
 Release:	1
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
-Patch1:		libxml-DESTDIR.patch
 URL:		http://rufus.w3.org/veillard/XML/messages/
 BuildRequires:	zlib-devel
 Prereq:		/sbin/install-info
@@ -52,7 +51,6 @@ Biblioteka statyczna libxml.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 automake
