@@ -6,7 +6,7 @@ Summary(ru):	Библиотека XML
 Summary(uk):	Б╕бл╕отека XML
 Name:		libxml
 Version:	1.8.17
-Release:	9
+Release:	10
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -16,6 +16,7 @@ Patch0:		%{name}-am15.patch
 Patch1:		%{name}-pmake.patch
 Patch2:		%{name}-urlbound.patch
 Patch3:		%{name}-man.patch
+Patch4:		%{name}-CAN-2004-0989.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -113,6 +114,7 @@ libxml приложений.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__libtoolize}
