@@ -6,13 +6,6 @@ Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://xmlsoft.org/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
 URL:		http://xmlsoft.org/
@@ -34,13 +27,6 @@ Biblioteka libxml umo©liwia manipulowanie zawarto╤ci╠ plikСw XML.
 Summary:	Header files etc to develop libxml applications
 Summary(pl):	Pliki nagЁСwkowe i inne do libxml
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	zlib-devel
 
@@ -55,13 +41,6 @@ tworzeniu aplikacji opartych o tЙ bibliotekЙ.
 Summary:	Static libxml libraries
 Summary(pl):	Biblioteka statyczna libxml
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
