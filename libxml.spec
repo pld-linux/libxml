@@ -1,10 +1,11 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.5
+Version:	1.8.6
 Release:	1
-Copyright:	LGPL
+License:	LGPL
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
@@ -12,7 +13,7 @@ URL:		http://xmlsoft.org/
 BuildRequires:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix /usr/X11R6
+%define		_prefix		/usr/X11R6
 
 %description
 This library allows you to manipulate XML files.
@@ -24,6 +25,7 @@ Biblioteka libxml umo¿liwia manipulowaie zawarto¶ci± plików XML.
 Summary:	Header files etc to develop libxml applications
 Summary(pl):	Pliki nag³ówkowe i inne do libxml
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -38,6 +40,7 @@ tworzeniu aplikacji opartych o t± bibliotekê.
 Summary:	Static libxml libraries
 Summary(pl):	Biblioteka statyczna libxml
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -84,5 +87,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/gnome-xml
 
 %files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%attr(644,root,root) %{_libdir}/lib*.a
