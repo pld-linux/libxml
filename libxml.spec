@@ -2,7 +2,7 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.0.0
-Release:	3
+Release:	4
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -90,6 +90,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/X11R6/lib/lib*.a
 
 %changelog
+* Wed Apr 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.0-4]
+- removed "Conflicts: glibc <= 2.0.7" (not neccessary now),
+- removed bogus "Prereq: /sbin/install-info",
+- recompiles on new rpm.
+
 * Thu Apr  1 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0.0-3]
 - added proper URl,
