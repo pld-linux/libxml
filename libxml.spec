@@ -10,7 +10,8 @@ Release:	6
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://xmlsoft.org/%{name}-%{version}.tar.gz
+Source0:	ftp://xmlsoft.org/old/%{name}-%{version}.tar.gz
+# Source0-md5:	53846294aa850a7d042948176d1d19dc
 Patch0:		%{name}-am15.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
