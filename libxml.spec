@@ -10,8 +10,8 @@ Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
 Patch1:		libxml-VERSION.patch
 URL:		http://rufus.w3.org/veillard/XML/messages/
+BuildPrereq:	zlib-devel
 Prereq:		/sbin/install-info
-Conflicts:	glibc <= 2.0.7
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -87,7 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/X11R6/include/gnome-xml
 
 %files static
-%attr(644,root,root) /usr/X11R6/lib/lib*.a
+%defattr(644,root,root,755)
+/usr/X11R6/lib/lib*.a
 
 %changelog
 * Wed Apr 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
