@@ -2,7 +2,7 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.8.12
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -12,6 +12,9 @@ Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
 URL:		http://xmlsoft.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +61,10 @@ Biblioteka statyczna libxml.
 %setup -q
 
 %build
+libtolize --copy --force
+aclocal
+autoconf
+automake -a -c
 %configure 
 %{__make}
 
