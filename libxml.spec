@@ -2,10 +2,11 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.8.11
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
@@ -19,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This library allows you to manipulate XML files.
 
 %description -l pl
-Biblioteka libxml umo¿liwia manipulowaie zawarto¶ci± plików XML.
+Biblioteka libxml umo¿liwia manipulowanie zawarto¶ci± plików XML.
 
 %package devel
 Summary:	Header files etc to develop libxml applications
@@ -34,8 +35,8 @@ Requires:	%{name} = %{version}
 Header files etc you can use to develop libxml applications.
 
 %description -l pl devel
-Pakiet ten zaziewra pliki nag³ówkowe i inne do libxml niezbêdne przy
-tworzeniu aplikacji opartych o t± bibliotekê.
+Pakiet ten zawiera pliki nag³ówkowe i inne do libxml niezbêdne przy
+tworzeniu aplikacji opartych o tê bibliotekê.
 
 %package static
 Summary:	Static libxml libraries
@@ -62,7 +63,9 @@ Biblioteka statyczna libxml.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	pkgconfigdir=%{_pkgconfigdir}
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
@@ -84,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
+%{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
