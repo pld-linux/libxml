@@ -45,7 +45,7 @@ XML файлами. XML (eXtensible Markup Language) - это формат данных для
 
 %package devel
 Summary:	Header files etc to develop libxml applications
-Summary(es):	Biblioteca y archivos de inclusiСn para desarrollo de aplicaciones libXML.
+Summary(es):	Biblioteca y archivos de inclusiСn para desarrollo de aplicaciones libXML
 Summary(pl):	Pliki nagЁСwkowe i inne do libxml
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
 Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
