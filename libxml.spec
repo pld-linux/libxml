@@ -67,7 +67,7 @@ make install prefix=$RPM_BUILD_ROOT/usr/X11R6
 
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO doc/{*.{html,gif},html/*}
+gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,17 +76,19 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
+%defattr(644,root,root,755)
 %attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html}.gz,html/*}
+%doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html},html/*}
 %attr(755,root,root) /usr/X11R6/bin/xml-config
 %attr(755,root,root) /usr/X11R6/lib/lib*.so
 %attr(755,root,root) /usr/X11R6/lib/*.sh
 /usr/X11R6/include/gnome-xml
 
 %files static
+%defattr(644,root,root,755)
 %attr(644,root,root) /usr/X11R6/lib/lib*.a
 
 %changelog
