@@ -27,15 +27,6 @@
          if ((cur[0] == ':') && (cur[1] == '/') && (cur[2] == '/')) {
  	    buf[index] = 0;
  	    ctxt->protocol = xmlMemStrdup(buf);
-@@ -236,7 +236,7 @@
-     if (*cur == 0) return;
- 
-     buf[index] = 0;
--    while (1) {
-+    while (index < (XML_NANO_MAX_URLBUF - 1)) {
-         if (cur[0] == ':') {
- 	    buf[index] = 0;
- 	    ctxt->hostname = xmlMemStrdup(buf);
 @@ -263,7 +265,7 @@
      else {
          index = 0;
@@ -63,15 +54,6 @@
          if ((cur[0] == ':') && (cur[1] == '/') && (cur[2] == '/')) {
  	    buf[index] = 0;
  	    if (strcmp(ctxt->protocol, buf))
-@@ -318,7 +318,7 @@
- 	return(-1);
- 
-     buf[index] = 0;
--    while (1) {
-+    while (index < (XML_NANO_MAX_URLBUF - 1)) {
-         if (cur[0] == ':') {
- 	    buf[index] = 0;
- 	    if (strcmp(ctxt->hostname, buf))
 @@ -353,7 +355,7 @@
      else {
          index = 0;
@@ -99,15 +81,6 @@
          if ((cur[0] == ':') && (cur[1] == '/') && (cur[2] == '/')) {
  	    buf[index] = 0;
  	    index = 0;
-@@ -407,7 +407,7 @@
-     if (*cur == 0) return;
- 
-     buf[index] = 0;
--    while (1) {
-+    while (index < (XML_NANO_MAX_URLBUF - 1)) {
-         if (cur[0] == ':') {
- 	    buf[index] = 0;
- 	    proxy = xmlMemStrdup(buf);
 --- libxml-1.8.17.orig/nanohttp.c
 +++ libxml-1.8.17/nanohttp.c
 @@ -161,6 +161,7 @@
@@ -127,15 +100,6 @@
          if ((cur[0] == ':') && (cur[1] == '/') && (cur[2] == '/')) {
  	    buf[index] = 0;
  	    ctxt->protocol = xmlMemStrdup(buf);
-@@ -191,7 +191,7 @@
-     if (*cur == 0) return;
- 
-     buf[index] = 0;
--    while (1) {
-+    while (index < indexMax) {
-         if (cur[0] == ':') {
- 	    buf[index] = 0;
- 	    ctxt->hostname = xmlMemStrdup(buf);
 @@ -219,7 +220,7 @@
      else {
          index = 0;
@@ -162,12 +126,3 @@
          if ((cur[0] == ':') && (cur[1] == '/') && (cur[2] == '/')) {
  	    buf[index] = 0;
  	    index = 0;
-@@ -272,7 +272,7 @@
-     if (*cur == 0) return;
- 
-     buf[index] = 0;
--    while (1) {
-+    while (index < indexMax) {
-         if (cur[0] == ':') {
- 	    buf[index] = 0;
- 	    proxy = xmlMemStrdup(buf);
