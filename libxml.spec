@@ -1,7 +1,7 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	0.99.8
+Version:	1.0.0
 Release:	1
 Copyright:	LGPL
 Group:		Libraries
@@ -56,7 +56,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install prefix=$RPM_BUILD_ROOT/usr
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO doc/{*.gif,*.html}
+%doc AUTHORS ChangeLog NEWS README TODO doc/{*.gif,*.html,html/*}
 %attr(755,root,root) /usr/bin/xml-config
 %attr(755,root,root) /usr/lib/lib*.so
 %attr(755,root,root) /usr/lib/*.sh
