@@ -7,6 +7,7 @@ Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
+Patch:		libxml-zlib.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 URL:		http://www.gnome.org
 Prereq:		/sbin/install-info
@@ -47,8 +48,12 @@ Biblioteka statyczna libxml.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
+automake
+libtoolize --force
+aclocal
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=/usr
@@ -81,6 +86,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.0-1]
+- fixed not linking libxmpl with libz (libxml-zlib.patch).
+
 * Fri Feb 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.99.8-1]
 - added "Conflicts: glibc <= 2.0.7" for prevent install
