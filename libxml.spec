@@ -2,7 +2,7 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.0.0
-Release:	4
+Release:	5
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -13,6 +13,8 @@ URL:		http://rufus.w3.org/veillard/XML/messages/
 BuildPrereq:	zlib-devel
 Prereq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define _prefix /usr/X11R6
 
 %description
 This library allows you to manipulate XML files.
@@ -58,14 +60,14 @@ libtoolize --force
 aclocal
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target} \
-	--prefix=/usr/X11R6
+	--prefix=%{_prefix}
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install prefix=$RPM_BUILD_ROOT/usr/X11R6
+make install prefix=$RPM_BUILD_ROOT%{_prefix}
 
-strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
@@ -76,67 +78,22 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
+%attr(755,root,root) %{_prefix}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html}.gz,html/*}
-%attr(755,root,root) /usr/X11R6/bin/xml-config
-%attr(755,root,root) /usr/X11R6/lib/lib*.so
-%attr(755,root,root) /usr/X11R6/lib/*.sh
-/usr/X11R6/include/gnome-xml
+%attr(755,root,root) %{_bindir}/xml-config
+%attr(755,root,root) %{_prefix}/lib*.so
+%attr(755,root,root) %{_prefix}/*.sh
+%{_includedir}/gnome-xml
 
 %files static
 %defattr(644,root,root,755)
-/usr/X11R6/lib/lib*.a
+%{_prefix}/lib*.a
 
 %changelog
-* Wed Apr 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.0.0-4]
-- removed "Conflicts: glibc <= 2.0.7" (not neccessary now),
-- removed bogus "Prereq: /sbin/install-info",
-- recompiles on new rpm.
-
-* Thu Apr  1 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.0.0-3]
-- added proper URl,
-- changed install prefix to /usr/X11R6 (gnome-libs requure
-  $gnomeprefix=xmlprefix),
-- fixed raporting xml library version by xml-config script.
-
-* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
-  [1.0.0-2]
-- added gzipping documentation
-
-* Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.0.0-1]
-- fixed not linking libxml with libz (libxml-zlib.patch).
-
-* Fri Feb 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.99.8-1]
-- added "Conflicts: glibc <= 2.0.7" for prevent install
-  with proper version glibc,
-- changed prefix to /usr,
-- changed all Group fields,
-- %doc moved to devel,
-- removed lib*.la files from static,
-- added pl translation.
-
-* Mon Jan 04 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.99-1]
-- added /usr/X11R6/bin/xml-config,
-- fixed permission on /usr/X11R6/lib/lib*.so*,
-- added LDFLAGS="-s" to ./configure enviroment.
-
-* Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.30-2]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- added static subpackage,
-- removed COPYING* from %doc,
-- added full %attr description in %files,
-- added stripping shared libraries.
-
-* Thu Sep 24 1998 Michael Fulbright <msf@redhat.com>
-- Built release 0.30
+* Tue May 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.0-5]
+- based on RH spec,
+- spec rewrited by PLD team.
