@@ -2,16 +2,16 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.0.0
-Release:	1
+Release:	2
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch:		libxml-zlib.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
 URL:		http://www.gnome.org
 Prereq:		/sbin/install-info
 Conflicts:	glibc <= 2.0.7
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 This library allows you to manipulate XML files.
@@ -65,6 +65,8 @@ make install prefix=$RPM_BUILD_ROOT/usr
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
+gzip -9nf AUTHORS ChangeLog NEWS README TODO doc/{*.{html,gif},html/*}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -76,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO doc/{*.gif,*.html,html/*}
+%doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html}.gz,html/*}
 %attr(755,root,root) /usr/bin/xml-config
 %attr(755,root,root) /usr/lib/lib*.so
 %attr(755,root,root) /usr/lib/*.sh
@@ -86,6 +88,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [1.0.0-2]
+- added gzipping documentation
+
 * Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0.0-1]
 - fixed not linking libxml with libz (libxml-zlib.patch).
