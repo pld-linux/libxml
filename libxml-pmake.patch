@@ -1,0 +1,29 @@
+--- libxml-1.8.17.old/Makefile.am	Sat Mar  1 20:32:49 2003
++++ libxml-1.8.17/Makefile.am	Sat Mar  1 20:34:27 2003
+@@ -60,22 +60,22 @@
+ 
+ tester_SOURCES=tester.c
+ tester_LDFLAGS = 
+-tester_DEPENDENCIES = $(DEPS)
++tester_DEPENDENCIES = $(DEPS) $(lib_LTLIBRARIES)
+ tester_LDADD=  @RDL_LIBS@ $(LDADDS)
+ 
+ testSAX_SOURCES=testSAX.c
+ testSAX_LDFLAGS = 
+-testSAX_DEPENDENCIES = $(DEPS)
++testSAX_DEPENDENCIES = $(DEPS) $(lib_LTLIBRARIES)
+ testSAX_LDADD= $(LDADDS)
+ 
+ testHTML_SOURCES=testHTML.c
+ testHTML_LDFLAGS = 
+-testHTML_DEPENDENCIES = $(DEPS)
++testHTML_DEPENDENCIES = $(DEPS) $(lib_LTLIBRARIES)
+ testHTML_LDADD= $(LDADDS)
+ 
+ testXPath_SOURCES=testXPath.c
+ testXPath_LDFLAGS = 
+-testXPath_DEPENDENCIES = $(DEPS)
++testXPath_DEPENDENCIES = $(DEPS) $(lib_LTLIBRARIES)
+ testXPath_LDADD= $(LDADDS)
+ 
+ check-local: tests
