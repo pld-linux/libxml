@@ -2,13 +2,14 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.0.0
-Release:	2
+Release:	3
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
-Patch:		libxml-zlib.patch
-URL:		http://www.gnome.org
+Patch0:		libxml-zlib.patch
+Patch1:		libxml-VERSION.patch
+URL:		http://rufus.w3.org/veillard/XML/messages/
 Prereq:		/sbin/install-info
 Conflicts:	glibc <= 2.0.7
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -48,7 +49,8 @@ Biblioteka statyczna libxml.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 automake
@@ -56,14 +58,14 @@ libtoolize --force
 aclocal
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
-	--prefix=/usr
+	--prefix=/usr/X11R6
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install prefix=$RPM_BUILD_ROOT/usr
+make install prefix=$RPM_BUILD_ROOT/usr/X11R6
 
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO doc/{*.{html,gif},html/*}
 
@@ -74,20 +76,27 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%attr(755,root,root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html}.gz,html/*}
-%attr(755,root,root) /usr/bin/xml-config
-%attr(755,root,root) /usr/lib/lib*.so
-%attr(755,root,root) /usr/lib/*.sh
-/usr/include/gnome-xml
+%attr(755,root,root) /usr/X11R6/bin/xml-config
+%attr(755,root,root) /usr/X11R6/lib/lib*.so
+%attr(755,root,root) /usr/X11R6/lib/*.sh
+/usr/X11R6/include/gnome-xml
 
 %files static
-%attr(644,root,root) /usr/lib/lib*.a
+%attr(644,root,root) /usr/X11R6/lib/lib*.a
 
 %changelog
+* Thu Apr  1 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.0-3]
+- added proper URl,
+- changed install prefix to /usr/X11R6 (gnome-libs requure
+  $gnomeprefix=xmlprefix),
+- fixed raporting xml library version by xml-config script.
+
 * Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
   [1.0.0-2]
 - added gzipping documentation
