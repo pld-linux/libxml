@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0.0-1]
-- fixed not linking libxmpl with libz (libxml-zlib.patch).
+- fixed not linking libxml with libz (libxml-zlib.patch).
 
 * Fri Feb 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.99.8-1]
