@@ -45,13 +45,14 @@ XML файлами. XML (eXtensible Markup Language) - это формат данных для
 
 %package devel
 Summary:	Header files etc to develop libxml applications
-Summary(es):	Biblioteca y archivos de inclusiСn para desarrollo de aplicaciones libXML
-Summary(pl):	Pliki nagЁСwkowe i inne do libxml
-Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
+Summary(es):	Archivos de inclusiСn para desarrollo de aplicaciones libXML
+Summary(pl):	Pliki nagЁСwkowe i inne do tworzenia aplikacji u©ywaj╠cych libxml
+Summary(pt_BR):	Arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
 Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
 Summary(uk):	Хедери та ╕нш╕ файли для розробки libxml програм
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}
+Requires:	gtk-doc-common
 Requires:	zlib-devel
 
 %description devel
@@ -78,8 +79,7 @@ libxml приложений.
 програм.
 
 %package static
-Summary:	Static libxml libraries
-Summary(es):	Static libraries to develop libxml applications
+Summary:	Static libxml library
 Summary(pl):	Biblioteka statyczna libxml
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento de aplicaГУes que usem a biblioteca libxml
 Summary(ru):	Статические библиотеки для разработки libxml приложений
@@ -88,10 +88,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
-Static libxml libraries.
-
-%description static -l es
-Static libraries, you can use to develop libxml applications.
+Static libxml library.
 
 %description static -l pl
 Biblioteka statyczna libxml.
@@ -114,12 +111,13 @@ libxml приложений.
 %patch1 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--with-html-dir=%{_gtkdocdir}
+
 %{__make}
 
 %install
@@ -127,6 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
+	HTML_DIR=%{_gtkdocdir} \
 	pkgconfigdir=%{_pkgconfigdir}
 
 %clean
@@ -137,17 +136,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO doc/{*.{gif,html},html/*}
 %attr(755,root,root) %{_bindir}/xml-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 %{_pkgconfigdir}/*
+%{_gtkdocdir}/gnome-xml
 
 %files static
 %defattr(644,root,root,755)
