@@ -2,7 +2,7 @@ Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
 Version:	1.6.1
-Release:	1
+Release:	2
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -10,7 +10,6 @@ Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
 URL:		http://rufus.w3.org/veillard/XML/messages/
 BuildRequires:	zlib-devel
-Prereq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix /usr/X11R6
