@@ -1,13 +1,13 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.7
+Version:	2.0.0
 Release:	1
 License:	LGPL
 Group:		Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source:		ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}2-%{version}.tar.gz
 URL:		http://xmlsoft.org/
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -50,10 +50,9 @@ Static libxml libraries.
 Biblioteka statyczna libxml.
 
 %prep
-%setup -q
+%setup -q -n %{name}2-%{version}
 
 %build
-automake
 LDFLAGS="-s"; export LDFLAGS
 %configure 
 make
@@ -73,6 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
@@ -82,7 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
-%{_includedir}/gnome-xml
+%{_includedir}/libxml
 
 %files static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
