@@ -6,13 +6,16 @@ Summary(ru):	Библиотека XML
 Summary(uk):	Б╕бл╕отека XML
 Name:		libxml
 Version:	1.8.17
-Release:	6
+Release:	7
 Epoch:		1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://xmlsoft.org/old/%{name}-%{version}.tar.gz
 # Source0-md5:	53846294aa850a7d042948176d1d19dc
 Patch0:		%{name}-am15.patch
+Patch1:		%{name}-pmake.patch
+Patch2:		%{name}-urlbound.patch
+Patch3:		%{name}-man.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -46,9 +49,9 @@ XML файлами. XML (eXtensible Markup Language) - это формат данных для
 
 %package devel
 Summary:	Header files etc to develop libxml applications
-Summary(es):	Biblioteca y archivos de inclusiСn para desarrollo de aplicaciones libXML.
-Summary(pl):	Pliki nagЁСwkowe i inne do libxml
-Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
+Summary(es):	Archivos de inclusiСn para desarrollo de aplicaciones libXML
+Summary(pl):	Pliki nagЁСwkowe i inne do tworzenia aplikacji u©ywaj╠cych libxml
+Summary(pt_BR):	Arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
 Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
 Summary(uk):	Хедери та ╕нш╕ файли для розробки libxml програм
 Group:		Development/Libraries
@@ -79,8 +82,7 @@ libxml приложений.
 програм.
 
 %package static
-Summary:	Static libxml libraries
-Summary(es):	Static libraries to develop libxml applications
+Summary:	Static libxml library
 Summary(pl):	Biblioteka statyczna libxml
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento de aplicaГУes que usem a biblioteca libxml
 Summary(ru):	Статические библиотеки для разработки libxml приложений
@@ -89,10 +91,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static libxml libraries.
-
-%description static -l es
-Static libraries, you can use to develop libxml applications.
+Static libxml library.
 
 %description static -l pl
 Biblioteka statyczna libxml.
@@ -112,11 +111,13 @@ libxml приложений.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -128,6 +129,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
+
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
+install debian/xml-config.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -148,6 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 %{_pkgconfigdir}/*
+%{_mandir}/man1/xml-config.1*
 
 %files static
 %defattr(644,root,root,755)
