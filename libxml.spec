@@ -1,7 +1,7 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.9
+Version:	1.8.10
 Release:	1
 License:	LGPL
 Group:		Libraries
