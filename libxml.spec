@@ -1,7 +1,7 @@
 Summary:     libXML library
 Name:        libxml
-Version:     0.30
-Release:     2
+Version:     0.99
+Release:     1
 Copyright:   LGPL
 Group:       X11/Libraries
 Source:      ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
@@ -32,13 +32,14 @@ Static libxml libraries.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
 	--prefix=/usr/X11R6
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make prefix=$RPM_BUILD_ROOT/usr/X11R6 install
+make install DESTDIR=$RPM_BUILD_ROOT
 
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 
@@ -51,18 +52,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-, root, root)
 %doc AUTHORS ChangeLog NEWS README TODO
-/usr/X11R6/lib/lib*.so.*.*
+%attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
 
 %files devel
 %defattr(644, root, root, 755)
-/usr/X11R6/lib/lib*.so
-/usr/X11R6/lib/*.sh
-/usr/X11R6/include/*
+%attr(755, root, root) /usr/X11R6/bin/xml-config
+%attr(755, root, root) /usr/X11R6/lib/lib*.so
+%attr(755, root, root) /usr/X11R6/lib/*.sh
+/usr/X11R6/include/gnome-xml
 
 %files static
 %attr(644, root, root) /usr/X11R6/lib/*a
 
 %changelog
+* Mon Jan 04 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.99-1]
+- added /usr/X11R6/bin/xml-config,
+- fixed permission on /usr/X11R6/lib/lib*.so*,
+- added LDFLAGS="-s" to ./configure enviroment.
+
 * Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.30-2]
 - added -q %setup parameter,
