@@ -23,7 +23,7 @@ Biblioteka libxml umo¿liwia manipulowaie zawarto¶ci± plików XML.
 %package devel
 Summary:	Header files etc to develop libxml applications
 Summary(pl):	Pliki nag³ówkowe i inne do libxml
-Group:		Development/libraries
+Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -37,7 +37,7 @@ tworzeniu aplikacji opartych o t± bibliotekê.
 %package static
 Summary:	Static libxml libraries
 Summary(pl):	Biblioteka statyczna libxml
-Group:		Development/libraries
+Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
