@@ -1,32 +1,49 @@
-Summary:     libXML library
-Name:        libxml
-Version:     0.99
-Release:     1
-Copyright:   LGPL
-Group:       X11/Libraries
-Source:      ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
-BuildRoot:   /tmp/%{name}-%{version}-root
-URL:         http://www.gnome.org
-Prereq:      /sbin/install-info
+Summary:	libXML library
+Summary(pl):	Biblioteka libxml
+Name:		libxml
+Version:	0.99.8
+Release:	1
+Copyright:	LGPL
+Group:		Libraries
+Group(pl):	Biblioteki
+Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
+BuildRoot:	/tmp/%{name}-%{version}-root
+URL:		http://www.gnome.org
+Prereq:		/sbin/install-info
+Conflicts:	glibc <= 2.0.7
 
 %description
 This library allows you to manipulate XML files.
 
+%description -l pl
+Biblioteka libxml umo¿liwia manipulowaie zawarto¶ci± plików XML.
+
 %package devel
-Summary:     Header files etc to develop libxml applications
-Group:       X11/libraries
-Requires:    %{name} = %{version}
+Summary:	Header files etc to develop libxml applications
+Summary(pl):	Pliki nag³ówkowe i inne do libxml
+Group:		Development/libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 Header files etc you can use to develop libxml applications.
 
+%description -l pl devel
+Pakiet ten zaziewra pliki nag³ówkowe i inne do libxml niezbêdne przy
+tworzeniu aplikacji opartych o t± bibliotekê.
+
 %package static
-Summary:     Static libxml libraries
-Group:       X11/libraries
-Requires:    %{name}-devel = %{version}
+Summary:	Static libxml libraries
+Summary(pl):	Biblioteka statyczna libxml
+Group:		Development/libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
 Static libxml libraries.
+
+%description -l pl static
+Biblioteka statyczna libxml.
 
 %prep
 %setup -q
@@ -34,14 +51,14 @@ Static libxml libraries.
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
-	--prefix=/usr/X11R6
+	--prefix=/usr
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -50,21 +67,30 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog NEWS README TODO
-%attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
+%attr(755,root,root) /usr/lib/lib*.so.*.*
 
 %files devel
-%defattr(644, root, root, 755)
-%attr(755, root, root) /usr/X11R6/bin/xml-config
-%attr(755, root, root) /usr/X11R6/lib/lib*.so
-%attr(755, root, root) /usr/X11R6/lib/*.sh
-/usr/X11R6/include/gnome-xml
+%defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README TODO doc/{*.gif,*.html}
+%attr(755,root,root) /usr/bin/xml-config
+%attr(755,root,root) /usr/lib/lib*.so
+%attr(755,root,root) /usr/lib/*.sh
+/usr/include/gnome-xml
 
 %files static
-%attr(644, root, root) /usr/X11R6/lib/*a
+%attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Fri Feb 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.99.8-1]
+- added "Conflicts: glibc <= 2.0.7" for prevent install
+  with proper version glibc,
+- changed prefix to /usr,
+- changed all Group fields,
+- %doc moved to devel,
+- removed lib*.la files from static,
+- added pl translation.
+
 * Mon Jan 04 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.99-1]
 - added /usr/X11R6/bin/xml-config,
