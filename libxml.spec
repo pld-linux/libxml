@@ -33,7 +33,7 @@ Requires:	zlib-devel
 %description devel
 Header files etc you can use to develop libxml applications.
 
-%description -l pl devel
+%description devel -l pl
 Pakiet ten zawiera pliki nag³ówkowe i inne do libxml niezbêdne przy
 tworzeniu aplikacji opartych o tê bibliotekê.
 
@@ -46,7 +46,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static libxml libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteka statyczna libxml.
 
 %prep
@@ -59,7 +59,7 @@ libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c
-%configure 
+%configure
 %{__make}
 
 %install
