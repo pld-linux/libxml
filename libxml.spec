@@ -1,7 +1,7 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.15
+Version:	1.8.16
 Release:	1
 Epoch:		1
 License:	LGPL
@@ -11,6 +11,7 @@ Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://xmlsoft.org/%{name}-%{version}.tar.gz
+Patch0:		%{name}-am15.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -60,8 +61,10 @@ Biblioteka statyczna libxml.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+rm -f missing
 libtoolize --copy --force
 aclocal
 autoconf
