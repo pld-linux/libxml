@@ -61,7 +61,7 @@ Biblioteka statyczna libxml.
 %setup -q
 
 %build
-libtolize --copy --force
+libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c
