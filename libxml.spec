@@ -1,14 +1,13 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.6
+Version:	1.8.7
 Release:	1
 License:	LGPL
 Group:		Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
-Patch0:		libxml-zlib.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -52,7 +51,6 @@ Biblioteka statyczna libxml.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 automake
