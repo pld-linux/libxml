@@ -6,20 +6,24 @@ Summary(ru):	Библиотека XML
 Summary(uk):	Б╕бл╕отека XML
 Name:		libxml
 Version:	1.8.17
-Release:	8
+Release:	7
 Epoch:		1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://xmlsoft.org/old/%{name}-%{version}.tar.gz
-# Source0-md5: 53846294aa850a7d042948176d1d19dc
+# Source0-md5:	53846294aa850a7d042948176d1d19dc
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-pmake.patch
+Patch2:		%{name}-urlbound.patch
+Patch3:		%{name}-man.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
 
 %description
 This library allows you to manipulate XML files.
@@ -51,8 +55,7 @@ Summary(pt_BR):	Arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem
 Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
 Summary(uk):	Хедери та ╕нш╕ файли для розробки libxml програм
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}
-Requires:	gtk-doc-common
+Requires:	%{name} = %{version}
 Requires:	zlib-devel
 
 %description devel
@@ -85,7 +88,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento de aplicaГУes que use
 Summary(ru):	Статические библиотеки для разработки libxml приложений
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки libxml програм
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{version}
 
 %description static
 Static libxml library.
@@ -109,15 +112,15 @@ libxml приложений.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure \
-	--with-html-dir=%{_gtkdocdir}
-
+%configure
 %{__make}
 
 %install
@@ -125,8 +128,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	HTML_DIR=%{_gtkdocdir} \
 	pkgconfigdir=%{_pkgconfigdir}
+
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
+install debian/xml-config.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -136,18 +141,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README TODO doc/{*.{gif,html},html/*}
 %attr(755,root,root) %{_bindir}/xml-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 %{_pkgconfigdir}/*
-%{_gtkdocdir}/gnome-xml
+%{_mandir}/man1/xml-config.1*
 
 %files static
 %defattr(644,root,root,755)
