@@ -1,7 +1,7 @@
 Summary:	libXML library
 Summary(pl):	Biblioteka libxml
 Name:		libxml
-Version:	1.8.14
+Version:	1.8.15
 Release:	1
 Epoch:		1
 License:	LGPL
@@ -10,7 +10,7 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.tar.gz
+Source0:	ftp://xmlsoft.org/%{name}-%{version}.tar.gz
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
