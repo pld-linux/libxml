@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 - added static subpackage,
 - removed COPYING* from %doc,
 - added full %attr description in %files,
-- added striping shared libraries.
+- added stripping shared libraries.
 
 * Thu Sep 24 1998 Michael Fulbright <msf@redhat.com>
 - Built release 0.30
