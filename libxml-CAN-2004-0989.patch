@@ -1,0 +1,13 @@
+CAN-2004-0989 fix: backport of nano* changes between 2.6.14 and 2.6.15
+--- libxml2-2.4.24/nanoftp.c.orig	2004-10-28 11:50:39.000000000 +0200
++++ libxml2-2.4.24/nanoftp.c	2004-10-28 12:15:49.000000000 +0200
+@@ -877,6 +877,9 @@
+     if (hp == NULL)
+         return(-1);
+ 
++    if ((unsigned int) hp->h_length > sizeof(ctxt->ftpAddr.sin_addr))
++	    return(-1); /* gethostbyname address mismatch */
++
+     /*
+      * Prepare the socket
+      */
