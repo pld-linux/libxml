@@ -143,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO doc/{*.{gif,html},html/*}
 %attr(755,root,root) %{_bindir}/xml-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 %{_pkgconfigdir}/*
