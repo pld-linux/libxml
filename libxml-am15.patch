@@ -1,0 +1,45 @@
+--- libxml-1.8.16/Makefile.am~	Thu Jun 28 16:53:53 2001
++++ libxml-1.8.16/Makefile.am	Sun Sep 16 21:31:24 2001
+@@ -2,18 +2,18 @@
+ 
+ SUBDIRS = doc
+ 
+-INCLUDES = -I@srcdir@ @Z_CFLAGS@ @CORBA_CFLAGS@ $(VERSION_FLAGS)
++INCLUDES = -I$(srcdir) $(Z_CFLAGS) $(CORBA_CFLAGS) $(VERSION_FLAGS)
+ 
+-VERSION_FLAGS = -DLIBXML_VERSION=\"@LIBXML_VERSION@\"
++VERSION_FLAGS = -DLIBXML_VERSION=\"$(LIBXML_VERSION)\"
+ 
+ noinst_PROGRAMS=tester testSAX testHTML testXPath
+ 
+ bin_SCRIPTS=xml-config
+ 
+ lib_LTLIBRARIES = libxml.la
+-libxml_la_LIBADD = @Z_LIBS@
++libxml_la_LIBADD = $(Z_LIBS)
+ 
+-libxml_la_LDFLAGS = -version-info @LIBXML_VERSION_INFO@ @Z_LIBS@
++libxml_la_LDFLAGS = -version-info $(LIBXML_VERSION_INFO)
+ 
+ libxml_la_SOURCES = \
+ 		SAX.c \
+@@ -56,8 +56,7 @@
+ 		xlink.h \
+ 		uri.h
+ 
+-DEPS = $(top_builddir)/libxml.la
+-LDADDS = $(top_builddir)/libxml.la @M_LIBS@
++LDADDS = $(top_builddir)/libxml.la
+ 
+ tester_SOURCES=tester.c
+ tester_LDFLAGS = 
+@@ -274,9 +273,6 @@
+ ## the value NONE in configure if the user doesn't specify them (this
+ ## is an autoconf feature, not a bug).
+ 
+-confexecdir=$(libdir)
+-confexec_DATA = xmlConf.sh
+-
+ CLEANFILES=xmlConf.sh
+ 
+ confexecdir=$(libdir)
