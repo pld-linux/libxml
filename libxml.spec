@@ -14,7 +14,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/libxml/%{name}-%{version}.
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires	libtool
+BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
