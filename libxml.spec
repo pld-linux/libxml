@@ -78,19 +78,19 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%attr(755,root,root) %{_prefix}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html}.gz,html/*}
+%doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz doc/{*.{gif,html},html/*}
 %attr(755,root,root) %{_bindir}/xml-config
-%attr(755,root,root) %{_prefix}/lib*.so
-%attr(755,root,root) %{_prefix}/*.sh
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/gnome-xml
 
 %files static
 %defattr(644,root,root,755)
-%{_prefix}/lib*.a
+%{_libdir}/lib*.a
 
 %changelog
 * Tue May 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
