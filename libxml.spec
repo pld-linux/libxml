@@ -51,7 +51,7 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento de aplic
 Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
 Summary(uk):	Хедери та ╕нш╕ файли для розробки libxml програм
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Requires:	zlib-devel
 
 %description devel
@@ -85,7 +85,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento de aplicaГУes que use
 Summary(ru):	Статические библиотеки для разработки libxml приложений
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки libxml програм
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Static libxml libraries.
