@@ -10,8 +10,9 @@ Release:	7
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://xmlsoft.org/%{name}-%{version}.tar.gz
+Source0:	ftp://xmlsoft.org/old/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
+Patch1:		%{name}-pmake.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -109,6 +110,7 @@ libxml приложений.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
