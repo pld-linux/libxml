@@ -10,7 +10,7 @@ Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
 Patch0:		libxml-zlib.patch
 Patch1:		libxml-DESTDIR.patch
 URL:		http://rufus.w3.org/veillard/XML/messages/
-BuildPrereq:	zlib-devel
+BuildRequires:	zlib-devel
 Prereq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
 
