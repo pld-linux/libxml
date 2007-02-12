@@ -1,9 +1,9 @@
 Summary:	libXML library
-Summary(es):	Biblioteca libXML
-Summary(pl):	Biblioteka libxml
-Summary(pt_BR):	Biblioteca libXML
-Summary(ru):	Библиотека XML
-Summary(uk):	Б╕бл╕отека XML
+Summary(es.UTF-8):   Biblioteca libXML
+Summary(pl.UTF-8):   Biblioteka libxml
+Summary(pt_BR.UTF-8):   Biblioteca libXML
+Summary(ru.UTF-8):   п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ XML
+Summary(uk.UTF-8):   п▒я√п╠п╩я√п╬я┌п╣п╨п╟ XML
 Name:		libxml
 Version:	1.8.17
 Release:	11
@@ -27,32 +27,32 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This library allows you to manipulate XML files.
 
-%description -l es
-Esta biblioteca permite manipulaciСn de archivos XML.
+%description -l es.UTF-8
+Esta biblioteca permite manipulaciцЁn de archivos XML.
 
-%description -l pl
-Biblioteka libxml umo©liwia manipulowanie zawarto╤ci╠ plikСw XML.
+%description -l pl.UTF-8
+Biblioteka libxml umoе╪liwia manipulowanie zawartoе⌡ciд┘ plikцЁw XML.
 
-%description -l pt_BR
-Esta biblioteca permite a manipulaГЦo de arquivos XML.
+%description -l pt_BR.UTF-8
+Esta biblioteca permite a manipulaц╖цёo de arquivos XML.
 
-%description -l ru
-Пакет libxml содержит библиотеку XML, которая позволяет манипулировать
-XML файлами. XML (eXtensible Markup Language) - это формат данных для
-обмена структурированными документами через Web.
+%description -l ru.UTF-8
+п÷п╟п╨п╣я┌ libxml я│п╬п╢п╣я─п╤п╦я┌ п╠п╦п╠п╩п╦п╬я┌п╣п╨я┐ XML, п╨п╬я┌п╬я─п╟я▐ п©п╬п╥п╡п╬п╩я▐п╣я┌ п╪п╟п╫п╦п©я┐п╩п╦я─п╬п╡п╟я┌я▄
+XML я└п╟п╧п╩п╟п╪п╦. XML (eXtensible Markup Language) - я█я┌п╬ я└п╬я─п╪п╟я┌ п╢п╟п╫п╫я▀я┘ п╢п╩я▐
+п╬п╠п╪п╣п╫п╟ я│я┌я─я┐п╨я┌я┐я─п╦я─п╬п╡п╟п╫п╫я▀п╪п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟п╪п╦ я┤п╣я─п╣п╥ Web.
 
-%description -l uk
-Пакет libxml м╕стить б╕бл╕отеку XML, яка дозволя╓ ман╕пулювати XML
-файлами. XML (eXtensible Markup Language) - це формат даних для обм╕ну
-струкурованими документами через Web.
+%description -l uk.UTF-8
+п÷п╟п╨п╣я┌ libxml п╪я√я│я┌п╦я┌я▄ п╠я√п╠п╩я√п╬я┌п╣п╨я┐ XML, я▐п╨п╟ п╢п╬п╥п╡п╬п╩я▐я■ п╪п╟п╫я√п©я┐п╩я▌п╡п╟я┌п╦ XML
+я└п╟п╧п╩п╟п╪п╦. XML (eXtensible Markup Language) - я├п╣ я└п╬я─п╪п╟я┌ п╢п╟п╫п╦я┘ п╢п╩я▐ п╬п╠п╪я√п╫я┐
+я│я┌я─я┐п╨я┐я─п╬п╡п╟п╫п╦п╪п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟п╪п╦ я┤п╣я─п╣п╥ Web.
 
 %package devel
 Summary:	Header files etc to develop libxml applications
-Summary(es):	Archivos de inclusiСn para desarrollo de aplicaciones libXML
-Summary(pl):	Pliki nagЁСwkowe i inne do tworzenia aplikacji u©ywaj╠cych libxml
-Summary(pt_BR):	Arquivos de inclusЦo para desenvolvimento de aplicaГУes que usem a biblioteca libxml
-Summary(ru):	Хедеры и другие файлы для разработки libxml приложений
-Summary(uk):	Хедери та ╕нш╕ файли для розробки libxml програм
+Summary(es.UTF-8):   Archivos de inclusiцЁn para desarrollo de aplicaciones libXML
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe i inne do tworzenia aplikacji uе╪ywajд┘cych libxml
+Summary(pt_BR.UTF-8):   Arquivos de inclusцёo para desenvolvimento de aplicaц╖ц╣es que usem a biblioteca libxml
+Summary(ru.UTF-8):   п╔п╣п╢п╣я─я▀ п╦ п╢я─я┐пЁп╦п╣ я└п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ libxml п©я─п╦п╩п╬п╤п╣п╫п╦п╧
+Summary(uk.UTF-8):   п╔п╣п╢п╣я─п╦ я┌п╟ я√п╫я┬я√ я└п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ libxml п©я─п╬пЁя─п╟п╪
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gtk-doc-common
@@ -61,52 +61,52 @@ Requires:	zlib-devel
 %description devel
 Header files etc you can use to develop libxml applications.
 
-%description devel -l es
-Biblioteca y archivos de inclusiСn para desarrollo de aplicaciones
+%description devel -l es.UTF-8
+Biblioteca y archivos de inclusiцЁn para desarrollo de aplicaciones
 libXML.
 
-%description devel -l pl
-Pakiet ten zawiera pliki nagЁСwkowe i inne do libxml niezbЙdne przy
-tworzeniu aplikacji opartych o tЙ bibliotekЙ.
+%description devel -l pl.UTF-8
+Pakiet ten zawiera pliki nagе┌цЁwkowe i inne do libxml niezbд≥dne przy
+tworzeniu aplikacji opartych o tд≥ bibliotekд≥.
 
-%description devel -l pt_BR
-Bibliotecas e arquivos de inclusЦo para desenvolvimento de aplicaГУes
+%description devel -l pt_BR.UTF-8
+Bibliotecas e arquivos de inclusцёo para desenvolvimento de aplicaц╖ц╣es
 que usem a biblioteca libxml.
 
-%description devel -l ru
-Пакет libxml-devel содержит хедеры и другие файлы для разработки
-libxml приложений.
+%description devel -l ru.UTF-8
+п÷п╟п╨п╣я┌ libxml-devel я│п╬п╢п╣я─п╤п╦я┌ я┘п╣п╢п╣я─я▀ п╦ п╢я─я┐пЁп╦п╣ я└п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦
+libxml п©я─п╦п╩п╬п╤п╣п╫п╦п╧.
 
-%description devel -l uk
-Пакет libxml-devel м╕стить хедери та ╕нш╕ файли для розробки libxml
-програм.
+%description devel -l uk.UTF-8
+п÷п╟п╨п╣я┌ libxml-devel п╪я√я│я┌п╦я┌я▄ я┘п╣п╢п╣я─п╦ я┌п╟ я√п╫я┬я√ я└п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ libxml
+п©я─п╬пЁя─п╟п╪.
 
 %package static
 Summary:	Static libxml library
-Summary(pl):	Biblioteka statyczna libxml
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento de aplicaГУes que usem a biblioteca libxml
-Summary(ru):	Статические библиотеки для разработки libxml приложений
-Summary(uk):	Статичн╕ б╕бл╕отеки для розробки libxml програм
+Summary(pl.UTF-8):   Biblioteka statyczna libxml
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento de aplicaц╖ц╣es que usem a biblioteca libxml
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ libxml п©я─п╦п╩п╬п╤п╣п╫п╦п╧
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ libxml п©я─п╬пЁя─п╟п╪
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libxml library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna libxml.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento de aplicaГУes que usem a
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento de aplicaц╖ц╣es que usem a
 biblioteca libxml.
 
-%description static -l ru
-Пакет libxml-static содержит cтатические библиотеки для разработки
-libxml приложений.
+%description static -l ru.UTF-8
+п÷п╟п╨п╣я┌ libxml-static я│п╬п╢п╣я─п╤п╦я┌ cя┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦
+libxml п©я─п╦п╩п╬п╤п╣п╫п╦п╧.
 
-%description static -l uk
-Пакет libxml-static м╕стить cтатичн╕ б╕бл╕отеки для розробки libxml
-програм.
+%description static -l uk.UTF-8
+п÷п╟п╨п╣я┌ libxml-static п╪я√я│я┌п╦я┌я▄ cя┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ libxml
+п©я─п╬пЁя─п╟п╪.
 
 %prep
 %setup -q
