@@ -1,9 +1,9 @@
 Summary:	libXML library
-Summary(es.UTF-8):   Biblioteca libXML
-Summary(pl.UTF-8):   Biblioteka libxml
-Summary(pt_BR.UTF-8):   Biblioteca libXML
-Summary(ru.UTF-8):   Библиотека XML
-Summary(uk.UTF-8):   Бібліотека XML
+Summary(es.UTF-8):	Biblioteca libXML
+Summary(pl.UTF-8):	Biblioteka libxml
+Summary(pt_BR.UTF-8):	Biblioteca libXML
+Summary(ru.UTF-8):	Библиотека XML
+Summary(uk.UTF-8):	Бібліотека XML
 Name:		libxml
 Version:	1.8.17
 Release:	11
@@ -48,11 +48,11 @@ XML файлами. XML (eXtensible Markup Language) - это формат да�
 
 %package devel
 Summary:	Header files etc to develop libxml applications
-Summary(es.UTF-8):   Archivos de inclusión para desarrollo de aplicaciones libXML
-Summary(pl.UTF-8):   Pliki nagłówkowe i inne do tworzenia aplikacji używających libxml
-Summary(pt_BR.UTF-8):   Arquivos de inclusão para desenvolvimento de aplicações que usem a biblioteca libxml
-Summary(ru.UTF-8):   Хедеры и другие файлы для разработки libxml приложений
-Summary(uk.UTF-8):   Хедери та інші файли для розробки libxml програм
+Summary(es.UTF-8):	Archivos de inclusión para desarrollo de aplicaciones libXML
+Summary(pl.UTF-8):	Pliki nagłówkowe i inne do tworzenia aplikacji używających libxml
+Summary(pt_BR.UTF-8):	Arquivos de inclusão para desenvolvimento de aplicações que usem a biblioteca libxml
+Summary(ru.UTF-8):	Хедеры и другие файлы для разработки libxml приложений
+Summary(uk.UTF-8):	Хедери та інші файли для розробки libxml програм
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gtk-doc-common
@@ -83,10 +83,10 @@ libxml приложений.
 
 %package static
 Summary:	Static libxml library
-Summary(pl.UTF-8):   Biblioteka statyczna libxml
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento de aplicações que usem a biblioteca libxml
-Summary(ru.UTF-8):   Статические библиотеки для разработки libxml приложений
-Summary(uk.UTF-8):   Статичні бібліотеки для розробки libxml програм
+Summary(pl.UTF-8):	Biblioteka statyczna libxml
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento de aplicações que usem a biblioteca libxml
+Summary(ru.UTF-8):	Статические библиотеки для разработки libxml приложений
+Summary(uk.UTF-8):	Статичні бібліотеки для розробки libxml програм
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
