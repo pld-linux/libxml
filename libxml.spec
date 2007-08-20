@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	libXML library
 Summary(es.UTF-8):	Biblioteca libXML
 Summary(pl.UTF-8):	Biblioteka libxml
@@ -122,7 +126,8 @@ libxml приложений.
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	%{!?with_static_libs:--disable-static}
 
 %{__make}
 
@@ -159,6 +164,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/gnome-xml
 %{_mandir}/man1/xml-config.1*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
