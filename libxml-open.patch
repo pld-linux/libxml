@@ -1,0 +1,12 @@
+diff -Nur libxml-1.8.17.orig/nanohttp.c libxml-1.8.17/nanohttp.c
+--- libxml-1.8.17.orig/nanohttp.c	2009-09-02 15:06:55.000000000 +0200
++++ libxml-1.8.17/nanohttp.c	2009-09-02 15:10:39.000000000 +0200
+@@ -1184,7 +1184,7 @@
+     if (!strcmp(filename, "-")) 
+         fd = 0;
+     else {
+-        fd = open(filename, O_CREAT | O_WRONLY);
++        fd = open(filename, O_CREAT | O_WRONLY, 00644);
+ 	if (fd < 0) {
+ 	    xmlNanoHTTPClose(ctxt);
+ 	    return(-1);

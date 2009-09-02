@@ -21,6 +21,7 @@ Patch1:		%{name}-pmake.patch
 Patch2:		%{name}-urlbound.patch
 Patch3:		%{name}-man.patch
 Patch4:		%{name}-CAN-2004-0989.patch
+Patch5:		%{name}-open.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -119,6 +120,7 @@ libxml приложений.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__libtoolize}
@@ -152,6 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxml.so.1
 
 %files devel
 %defattr(644,root,root,755)
