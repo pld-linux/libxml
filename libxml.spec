@@ -10,7 +10,7 @@ Summary(ru.UTF-8):	Библиотека XML
 Summary(uk.UTF-8):	Бібліотека XML
 Name:		libxml
 Version:	1.8.17
-Release:	12
+Release:	13
 Epoch:		1
 License:	LGPL
 Group:		Libraries
