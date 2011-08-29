@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
-#
+
 Summary:	libXML library
 Summary(es.UTF-8):	Biblioteca libXML
 Summary(pl.UTF-8):	Biblioteka libxml
@@ -142,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 	pkgconfigdir=%{_pkgconfigdir}
 
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install debian/xml-config.1 $RPM_BUILD_ROOT%{_mandir}/man1
+cp -p debian/xml-config.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
