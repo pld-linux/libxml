@@ -1,0 +1,75 @@
+--- libxml-1.8.17/debugXML.c~	2000-06-28 18:33:46.000000000 +0000
++++ libxml-1.8.17/debugXML.c	2015-01-04 09:40:07.436759762 +0000
+@@ -46,7 +46,7 @@
+         shift[2 * i] = shift[2 * i + 1] = ' ';
+     shift[2 * i] = shift[2 * i + 1] = 0;
+ 
+-    fprintf(output, shift);
++    fprintf(output, "%s", shift);
+     if (ns->type == XML_GLOBAL_NAMESPACE)
+         fprintf(output, "old ");
+     if (ns->prefix != NULL)
+@@ -73,7 +73,7 @@
+         shift[2 * i] = shift[2 * i + 1] = ' ';
+     shift[2 * i] = shift[2 * i + 1] = 0;
+ 
+-    fprintf(output, shift);
++    fprintf(output, "%s", shift);
+     switch (ent->type) {
+         case XML_INTERNAL_GENERAL_ENTITY:
+ 	    fprintf(output, "INTERNAL_GENERAL_ENTITY ");
+@@ -95,15 +95,15 @@
+     }
+     fprintf(output, "%s\n", ent->name);
+     if (ent->ExternalID) {
+-        fprintf(output, shift);
++        fprintf(output, "%s", shift);
+         fprintf(output, "ExternalID=%s\n", ent->ExternalID);
+     }
+     if (ent->SystemID) {
+-        fprintf(output, shift);
++        fprintf(output, "%s", shift);
+         fprintf(output, "SystemID=%s\n", ent->SystemID);
+     }
+     if (ent->content) {
+-        fprintf(output, shift);
++        fprintf(output, "%s", shift);
+ 	fprintf(output, "content=");
+ 	xmlDebugDumpString(output, ent->content);
+ 	fprintf(output, "\n");
+@@ -118,7 +118,7 @@
+         shift[2 * i] = shift[2 * i + 1] = ' ';
+     shift[2 * i] = shift[2 * i + 1] = 0;
+ 
+-    fprintf(output, shift);
++    fprintf(output, "%s", shift);
+     fprintf(output, "ATTRIBUTE %s\n", attr->name);
+     if (attr->val != NULL) 
+         xmlDebugDumpNodeList(output, attr->val, depth + 1);
+@@ -139,7 +139,7 @@
+         shift[2 * i] = shift[2 * i + 1] = ' ';
+     shift[2 * i] = shift[2 * i + 1] = 0;
+ 
+-    fprintf(output, shift);
++    fprintf(output, "%s", shift);
+     switch (node->type) {
+ 	case XML_ELEMENT_NODE:
+ 	    fprintf(output, "ELEMENT ");
+@@ -186,7 +186,7 @@
+ 	    fprintf(output, "NODE_%d\n", node->type);
+     }
+     if (node->doc == NULL) {
+-        fprintf(output, shift);
++        fprintf(output, "%s", shift);
+ 	fprintf(output, "doc == NULL !!!\n");
+     }
+     if (node->nsDef != NULL) 
+@@ -195,7 +195,7 @@
+ 	xmlDebugDumpAttrList(output, node->properties, depth + 1);
+     if (node->type != XML_ENTITY_REF_NODE) {
+ 	if (node->content != NULL) {
+-	    fprintf(output, shift);
++	    fprintf(output, "%s", shift);
+ 	    fprintf(output, "content=");
+ #ifndef XML_USE_BUFFER_CONTENT	    
+ 	    xmlDebugDumpString(output, node->content);

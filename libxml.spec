@@ -22,6 +22,7 @@ Patch2:		%{name}-urlbound.patch
 Patch3:		%{name}-man.patch
 Patch4:		%{name}-CAN-2004-0989.patch
 Patch5:		%{name}-open.patch
+Patch6:		format-security.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -121,6 +122,7 @@ libxml приложений.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__libtoolize}
