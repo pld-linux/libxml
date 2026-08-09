@@ -10,11 +10,11 @@ Summary(ru.UTF-8):	Библиотека XML
 Summary(uk.UTF-8):	Бібліотека XML
 Name:		libxml
 Version:	1.8.17
-Release:	14
+Release:	15
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://xmlsoft.org/old/%{name}-%{version}.tar.gz
+Source0:	https://download.gnome.org/sources/%{name}/1.8/%{name}-%{version}.tar.gz
 # Source0-md5:	53846294aa850a7d042948176d1d19dc
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-pmake.patch
@@ -23,6 +23,7 @@ Patch3:		%{name}-man.patch
 Patch4:		%{name}-CAN-2004-0989.patch
 Patch5:		%{name}-open.patch
 Patch6:		format-security.patch
+Patch7:		%{name}-c99.patch
 URL:		http://xmlsoft.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -123,6 +124,7 @@ libxml приложений.
 %patch -P4 -p1
 %patch -P5 -p1
 %patch -P6 -p1
+%patch -P7 -p1
 
 %build
 %{__libtoolize}

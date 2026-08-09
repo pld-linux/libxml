@@ -1,0 +1,115 @@
+Declare the public functions that were defined but missing from the headers and use
+socklen_t for getsockname(); GCC 14+ rejects implicit declarations and mismatched
+pointer types. HAVE_STRING_H was never checked by configure, so debugXML.c never
+got <string.h>. The now-prototyped xmlStrEqual() needs BAD_CAST on its string
+literal arguments, as parser.c already does.
+
+--- libxml-1.8.17.orig/configure.in
++++ libxml-1.8.17/configure.in
+@@ -64,7 +64,7 @@
+ dnl Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(fcntl.h unistd.h ctype.h dirent.h errno.h malloc.h)
++AC_CHECK_HEADERS(fcntl.h unistd.h ctype.h dirent.h errno.h malloc.h string.h)
+ AC_CHECK_HEADERS(stdarg.h sys/stat.h sys/types.h time.h)
+ AC_CHECK_HEADERS(ieeefp.h nan.h math.h fp_class.h float.h)
+ AC_CHECK_HEADERS(stdlib.h sys/socket.h netinet/in.h arpa/inet.h)
+--- libxml-1.8.17.orig/config.h.in
++++ libxml-1.8.17/config.h.in
+@@ -99,6 +99,9 @@
+ /* Define if you have the <stdlib.h> header file.  */
+ #undef HAVE_STDLIB_H
+ 
++/* Define if you have the <string.h> header file.  */
++#undef HAVE_STRING_H
++
+ /* Define if you have the <sys/dir.h> header file.  */
+ #undef HAVE_SYS_DIR_H
+ 
+--- libxml-1.8.17.orig/parser.h
++++ libxml-1.8.17/parser.h
+@@ -342,6 +342,8 @@
+ 					 xmlChar *val);
+ int		xmlStrcmp		(const xmlChar *str1,
+ 					 const xmlChar *str2);
++int		xmlStrEqual		(const xmlChar *str1,
++					 const xmlChar *str2);
+ int		xmlStrncmp		(const xmlChar *str1,
+ 					 const xmlChar *str2,
+ 					 int len);
+@@ -396,6 +398,19 @@
+ xmlDtdPtr	xmlSAXParseDTD		(xmlSAXHandlerPtr sax,
+ 					 const xmlChar *ExternalID,
+ 					 const xmlChar *SystemID);
++int		xmlParseBalancedChunkMemory(xmlDocPtr doc,
++					 xmlSAXHandlerPtr sax,
++					 void *user_data,
++					 int depth,
++					 const xmlChar *string,
++					 xmlNodePtr *list);
++int		xmlParseExternalEntity	(xmlDocPtr doc,
++					 xmlSAXHandlerPtr sax,
++					 void *user_data,
++					 int depth,
++					 const xmlChar *URL,
++					 const xmlChar *ID,
++					 xmlNodePtr *list);
+ /**
+  * SAX initialization routines
+  */
+@@ -403,6 +418,11 @@
+ void		htmlDefaultSAXHandlerInit(void);
+ 
+ /**
++ * Parser initialization.
++ */
++void		xmlInitParser		(void);
++
++/**
+  * Parser contexts handling.
+  */
+ void		xmlInitParserCtxt	(xmlParserCtxtPtr ctxt);
+--- libxml-1.8.17.orig/entities.h
++++ libxml-1.8.17/entities.h
+@@ -93,6 +93,7 @@
+ void			xmlDumpEntitiesTable	(xmlBufferPtr buf,
+ 						 xmlEntitiesTablePtr table);
+ xmlEntitiesTablePtr	xmlCopyEntitiesTable	(xmlEntitiesTablePtr table);
++void			xmlInitializePredefinedEntities(void);
+ void			xmlCleanupPredefinedEntities(void);
+ 
+ #ifdef __cplusplus
+--- libxml-1.8.17.orig/nanoftp.c
++++ libxml-1.8.17/nanoftp.c
+@@ -1227,7 +1227,7 @@
+     unsigned char ad[6], *adp, *portp;
+     unsigned int temp[6];
+     struct sockaddr_in dataAddr;
+-    size_t dataAddrLen;
++    socklen_t dataAddrLen;
+ 
+     ctxt->dataFd = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
+     if (ctxt->dataFd < 0) {
+--- libxml-1.8.17.orig/entities.c
++++ libxml-1.8.17/entities.c
+@@ -661,7 +661,7 @@
+ 		ptr = buf;
+ 		while (*ptr != 0) *out++ = *ptr++;
+ 	    } else if ((doc != NULL) && (doc->encoding != NULL) &&
+-		       (xmlStrEqual(doc->encoding, "UTF-8"))) {
++		       (xmlStrEqual(doc->encoding, BAD_CAST "UTF-8"))) {
+ 		/*
+ 		 * We assume we have UTF-8 input.
+ 		 */
+--- libxml-1.8.17.orig/tree.c
++++ libxml-1.8.17/tree.c
+@@ -4422,7 +4422,7 @@
+     else
+ 	xmlBufferWriteChar(buf, "\"1.0\"");
+     if ((cur->encoding != NULL) &&
+-	(!xmlStrEqual(cur->encoding, "UTF-8"))) {
++	(!xmlStrEqual(cur->encoding, BAD_CAST "UTF-8"))) {
+         xmlBufferWriteChar(buf, " encoding=");
+ 	xmlBufferWriteQuotedString(buf, cur->encoding);
+     }
